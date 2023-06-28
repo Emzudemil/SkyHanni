@@ -54,10 +54,6 @@ class MobFinder {
     private var floor3ProfessorGuardian = false
     private var floor3ProfessorGuardianEntity: EntityGuardian? = null
 
-    //F5
-    private var floor5lividEntity: EntityOtherPlayerMP? = null
-    private var floor5lividEntitySpawnTime = 0L
-
     //F6
     private var floor6Giants = false
     private var floor6GiantsSpawnTime = 0L
@@ -522,13 +518,6 @@ class MobFinder {
                     floor3ProfessorGuardian = false
                 }
 
-
-                //F5
-                "§c[BOSS] Livid§r§f: This Orb you see, is Thorn, or what is left of him." -> {
-                    floor5lividEntity = DungeonLividFinder.livid
-                    floor5lividEntitySpawnTime = System.currentTimeMillis() + 13_000
-                }
-
                 //F6
                 "§c[BOSS] Sadan§r§f: ENOUGH!" -> {
                     floor6Giants = true
@@ -544,10 +533,6 @@ class MobFinder {
                 "§c[BOSS] Sadan§r§f: NOOOOOOOOO!!! THIS IS IMPOSSIBLE!!" -> {
                     floor6Sadan = false
                 }
-            }
-
-            if (message.matchRegex("§c\\[BOSS] (.*) Livid§r§f: Impossible! How did you figure out which one I was\\?!")) {
-                floor5lividEntity = null
             }
         }
     }
