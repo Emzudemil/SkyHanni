@@ -20,7 +20,6 @@ object DungeonLividFinder {
     var livid: EntityOtherPlayerMP? = null
     private var gotBlinded = false
     private val blockLocation = LorenzVec(6, 109, 43)
-    private val lividColor = Color(191, 0, 255).rgb
 
     @SubscribeEvent
     fun onTick(event: LorenzTickEvent) {
@@ -53,7 +52,6 @@ object DungeonLividFinder {
         livid = world.getEntitiesWithinAABB(EntityOtherPlayerMP::class.java, aabb)
             .takeIf { it.size == 1 }?.firstOrNull() ?: return
         livid?.let {
-            RenderLivingEntityHelper.setEntityColor(it, lividColor) { true }
             LorenzUtils.debug("Livid found!")
         }
     }
