@@ -2,10 +2,7 @@ package at.hannibal2.skyhanni.features.damageindicator
 
 import at.hannibal2.skyhanni.SkyHanniMod
 import at.hannibal2.skyhanni.data.ScoreboardData
-import at.hannibal2.skyhanni.events.BossHealthChangeEvent
-import at.hannibal2.skyhanni.events.DamageIndicatorDetectedEvent
-import at.hannibal2.skyhanni.events.DamageIndicatorFinalBossEvent
-import at.hannibal2.skyhanni.events.LorenzChatEvent
+import at.hannibal2.skyhanni.events.*
 import at.hannibal2.skyhanni.features.dungeon.DungeonData
 import at.hannibal2.skyhanni.features.slayer.blaze.HellionShield
 import at.hannibal2.skyhanni.features.slayer.blaze.setHellionShield
@@ -82,6 +79,11 @@ class DamageIndicatorManager {
                 .map { it.entity.getLorenzVec() }
                 .minOfOrNull { it.distance(location) } ?: Double.MAX_VALUE
         }
+    }
+
+    @SubscribeEvent
+    fun onLividChange(event: LividUpdateEvent) {
+        data.clear()
     }
 
     @SubscribeEvent
